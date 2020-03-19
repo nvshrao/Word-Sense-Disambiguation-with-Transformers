@@ -1,0 +1,15 @@
+#https://pilehvar.github.io/wic/
+
+!wget https://pilehvar.github.io/wic/package/WiC_dataset.zip
+!unzip ./WiC_dataset.zip
+train = pd.read_csv("train/train.data.txt",sep="\t",names=["target_word","PoS","index1-index2","example_1","example_2"])
+trainlabels = open("train/train.gold.txt").read().split("\n")
+train["label"] = trainlabels[:-1]
+
+test = pd.read_csv("test/test.data.txt",sep="\t",names=["target_word","PoS","index1-index2","example_1","example_2"])
+#testlabels = open("test/test.gold.txt").read().split("\n") No test labels
+#test["label"] = testlabels[:-1]
+
+dev = pd.read_csv("dev/dev.data.txt",sep="\t",names=["target_word","PoS","index1-index2","example_1","example_2"])
+devlabels = open("dev/dev.gold.txt").read().split("\n")
+dev["label"] = devlabels[:-1]
